@@ -21,7 +21,7 @@
                 return messaging.getToken();
             })
             .then(token => {
-              log(`Received FCM token: ${token}`);
+                console.log(`Received FCM token: ${token}`);
             })
             .catch((err) => {
                 console.log('Error Occured: ' + err)

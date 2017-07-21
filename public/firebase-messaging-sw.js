@@ -12,3 +12,4 @@ const config = {
 firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
+console.log(messaging);

@@ -15,6 +15,7 @@
     firebase.initializeApp(config);
 
     var messaging = firebase.messaging();
+    console.log(messaging);
     messaging.requestPermission()
             .then(() => {
                 console.log('Have permission');

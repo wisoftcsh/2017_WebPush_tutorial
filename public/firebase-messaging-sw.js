@@ -11,5 +11,11 @@ const config = {
 };
 firebase.initializeApp(config);
 
-var messaging = firebase.messaging();
-console.log(messaging);
+const messaging = firebase.messaging();
+messaging.setBackgroundMessageHandler(payload => {
+  const title = "Notification: WiSoft Lab.";
+  const options = {
+    body: payload.data.status
+  }
+  return self.registration.showNotification(title, options);
+});

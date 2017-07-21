@@ -14,7 +14,7 @@
     };
     firebase.initializeApp(config);
 
-    var messaging = firebase.messaging();
+    const messaging = firebase.messaging();
     console.log(messaging);
     messaging.requestPermission()
             .then(() => {

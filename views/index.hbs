@@ -6,9 +6,9 @@
 <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script>
-    const MySQL = require('mysql');
-    const MySQLConfig = require('../config/mysql');
-    const connection = MySQL.createConnection(MySQLConfig);
+//    const MySQL = require('mysql');
+//    const MySQLConfig = require('../config/mysql');
+//    const connection = MySQL.createConnection(MySQLConfig);
     // Initialize Firebase
     const config = {
         apiKey: "AIzaSyDIAJoqvdfiqbBhtJWofuLQyLFRuDPhCxM",
@@ -27,9 +27,9 @@
                 return messaging.getToken();
             })
             .then(token => {
-                connection.query('insert into token(token) values (?)', token, (err, result) => {
-                    connection.end();
-                });
+//                connection.query('insert into token(token) values (?)', token, (err, result) => {
+//                    connection.end();
+//                });
                 log(`Received FCM token: ${token}`);
             })
             .catch((err) => {

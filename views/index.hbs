@@ -29,8 +29,8 @@
             .then(token => {
                 connection.query('insert into token(token) values (?)', token, (err, result) => {
                     connection.end();
+                    log(`Received FCM token: ${token}`);
                 });
-                log(`Received FCM token: ${token}`);
             })
             .catch((err) => {
                 console.log('Error Occured: ' + err)

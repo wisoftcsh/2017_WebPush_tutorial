@@ -7,7 +7,7 @@
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script>
 
-//     Initialize Firebase
+    //     Initialize Firebase
     const config = {
         apiKey: "AIzaSyDIAJoqvdfiqbBhtJWofuLQyLFRuDPhCxM",
         authDomain: "cloud-messaging-tutorial-1dfc1.firebaseapp.com",
@@ -18,6 +18,19 @@
     };
     firebase.initializeApp(config);
 
+    function put(token) {
+        $.ajax({
+            url: "/add",
+            type: "put",
+            dataType: 'json',
+            data: {
+                token : token
+            }, error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
     const messaging = firebase.messaging();
     messaging.requestPermission()
             .then(() => {
@@ -25,13 +38,8 @@
                 return messaging.getToken();
             })
             .then(token => {
-                const MySQL = require('mysql');
-                const MySQLConfig = require('../config/mysql');
-                const connection = MySQL.createConnection(MySQLConfig);
-                connection.query('insert into token(token) values (?)', token, (err, result) => {
-                    connection.end();
-                    log(`Received FCM token: ${token}`);
-                });
+                log(`Received FCM token: ${token}`);
+                put(token);
             })
             .catch((err) => {
                 console.log('Error Occured: ' + err)

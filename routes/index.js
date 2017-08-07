@@ -12,7 +12,7 @@ router.put('/add', (req, res) => {
   console.log(req);
   console.log(req.payload);
 
-  connection.query('insert into token(token) values (?)', req.payload.token, (err, result) => {
+  connection.query('insert into token(token) values (?)', req.payload, (err, result) => {
     connection.end();
   });
 })

@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.put('/add', (req, res) => {
-  connection.query('insert into token(token) values (?)', req.payload, (err, result) => {
+  connection.query('insert into token(token) values (?)', req.payload.token, (err, result) => {
     connection.end();
   });
 })

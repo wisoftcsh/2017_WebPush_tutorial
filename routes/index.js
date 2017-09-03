@@ -1,20 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const MySQL = require('mysql');
+const MySQL = require('promise-mysql');
 const MySQLConfig = require('../config/mysql');
-const connection = MySQL.createConnection(MySQLConfig);
+let connection;
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function (req, res, next) {
+  res.render('index', {title: 'Express'});
 });
 
 router.put('/add', (req, res) => {
-  console.log(req);
-  console.log(req.payload);
-
-  connection.query('insert into token(token) values (?)', req.payload, (err, result) => {
+  connection.query('insert into token(token) values (?)', req.body.token, (err, result) => {
     connection.end();
   });
-})
+});
 
 module.exports = router;

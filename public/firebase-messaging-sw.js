@@ -1,13 +1,14 @@
 importScripts('https://www.gstatic.com/firebasejs/4.1.3/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/4.1.3/firebase-messaging.js');
+importScripts('https://www.gstatic.com/firebasejs/4.3.0/firebase.js');
 
 const config = {
-  apiKey: "AIzaSyDIAJoqvdfiqbBhtJWofuLQyLFRuDPhCxM",
-  authDomain: "cloud-messaging-tutorial-1dfc1.firebaseapp.com",
-  databaseURL: "https://cloud-messaging-tutorial-1dfc1.firebaseio.com",
-  projectId: "cloud-messaging-tutorial-1dfc1",
-  storageBucket: "cloud-messaging-tutorial-1dfc1.appspot.com",
-  messagingSenderId: "249077514611"
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: ""
 };
 firebase.initializeApp(config);
 
@@ -16,6 +17,6 @@ messaging.setBackgroundMessageHandler(payload => {
   const title = "Notification: WiSoft Lab.";
   const options = {
     body: payload.data.status
-  }
+  };
   return self.registration.showNotification(title, options);
 });
